@@ -38,8 +38,6 @@ export class RegisterPage implements OnInit {
   registryUser(){
     localStorage.setItem('userInput', this.userInput);
     localStorage.setItem('passInput', this.passInput);
-    console.log(localStorage.getItem('userInput'));
-    console.log(localStorage.getItem('passInput'));
     this.modalController.dismiss();
     this.router.navigateByUrl('dashboard');
   }

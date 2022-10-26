@@ -1,9 +1,29 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>dashboard</ion-title>
+<ion-header traslucent mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-title>Movie App</ion-title>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar animated="true" placeholder="Busca un título" (ionChange)="findElementInBar($event)"></ion-searchbar>
+  </ion-toolbar>
+
+  <ion-list *ngIf="showList">
+    <ion-item *ngFor="let item of filterList | searchbar: textToFind: 'name' ">
+      <ion-label> {{item.name}} </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-header>
 
 <ion-content>
+  <cdk-virtual-scroll-viewport itemSize="56" minBufferPx="900" maxBufferPx="1350"> 
+    <ion-grid>
+      <ion-card *cdkVirtualFor="let movie of arrayMovies" (click)="viewDetails(movie)">
+        <img  [src]="movie['_embedded'].show.image.medium" />
+        <ion-card-header>
+          <ion-card-title style="font-size: medium;">{{movie['_embedded'].show.name}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-grid>
+  </cdk-virtual-scroll-viewport>
 
 </ion-content>

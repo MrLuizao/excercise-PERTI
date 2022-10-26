@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -13,17 +14,21 @@ export class LoginPage implements OnInit {
   userInput: string;
   passInput: string;
 
-  constructor( public modalController: ModalController ) { }
+  constructor(  public modalController: ModalController,
+                public router: Router ) { }
 
   ngOnInit() {
     this.userInput = localStorage.getItem('userInput')
     this.passInput = localStorage.getItem('passInput')
-    console.log(this.userInput);
-    console.log(this.passInput);
   }
 
   cancel() {
     this.modalController.dismiss();
+  }
+
+  loginUser(){
+    this.modalController.dismiss();
+    this.router.navigateByUrl('dashboard');
   }
 
 }

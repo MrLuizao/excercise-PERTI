@@ -1,0 +1,12 @@
+cdk-virtual-scroll-viewport {
+    height: 100%;
+    width: 100%;
+
+    ion-card{
+        width: 40%;
+        display: inline-block;
+        max-height: 22em;
+        min-height: 22em;
+    }
+    
+}
