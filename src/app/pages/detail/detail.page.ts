@@ -19,18 +19,13 @@ export class DetailPage implements OnInit {
 
   ngOnInit() {
     this.rxjsService.$getdetailMovieItem.subscribe( (element)=>{
-      console.log('$getdetailMovieItem', element);
-      this.movieName = element['_embedded'].show.name;
-      this.backGround = element['_embedded'].show.image.original;
-      this.gendre = element['_embedded'].show.type;
-      this.summary = element['_embedded'].show.summary;
+      this.movieName = element.name;
+      this.backGround = element.image.original;
+      this.gendre = element.type;
+      this.summary = element.summary;
       this.summary  = this.summary.substring(3);
       this.summary = this.summary.slice(0,-4);
-      console.log('summary', this.summary);
-      
-      this.schedule =  element['_embedded'].show.schedule;
-      console.log( 'schedule',  this.schedule );
-      
+      this.schedule =  element.schedule;
     });
   }
 

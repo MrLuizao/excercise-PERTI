@@ -5,11 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
-
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
-import { PipesModule } from 'src/app/pipes/pipes.module';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
@@ -18,7 +17,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     IonicModule,
     ScrollingModule,
     DashboardPageRoutingModule,
-    PipesModule
+    ComponentsModule
   ],
   declarations: [DashboardPage]
 })

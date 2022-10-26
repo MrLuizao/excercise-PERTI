@@ -1,0 +1,9 @@
+<ion-toolbar>
+  <ion-searchbar animated="true" placeholder="Busca un título" (ionChange)="findElementInBar($event)"></ion-searchbar>
+</ion-toolbar>
+
+<ion-list *ngIf="showList">
+  <ion-item *ngFor="let item of filterList | searchbar: textToFind: 'name' " >
+    <ion-label  (click)="viewDetails(item)" > {{item.name}} </ion-label>
+  </ion-item>
+</ion-list>

@@ -1,16 +1,10 @@
 <ion-header traslucent mode="ios">
   <ion-toolbar mode="ios">
     <ion-title>Movie App</ion-title>
-  </ion-toolbar>
-  <ion-toolbar>
-    <ion-searchbar animated="true" placeholder="Busca un título" (ionChange)="findElementInBar($event)"></ion-searchbar>
+    <ion-icon name="log-out-outline" size="large" slot="end" (click)="presentAlert()"></ion-icon>
   </ion-toolbar>
 
-  <ion-list *ngIf="showList">
-    <ion-item *ngFor="let item of filterList | searchbar: textToFind: 'name' ">
-      <ion-label> {{item.name}} </ion-label>
-    </ion-item>
-  </ion-list>
+  <app-search></app-search>
 
 </ion-header>
 

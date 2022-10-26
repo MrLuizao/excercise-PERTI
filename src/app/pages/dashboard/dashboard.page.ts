@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { MovieDataService } from 'src/app/services/movie-data.service';
 import { RjxsService } from 'src/app/services/rjxs.service';
 
@@ -18,6 +19,7 @@ export class DashboardPage implements OnInit {
 
   constructor(  public router: Router,
                 private rxjsService: RjxsService,
+                private alertController: AlertController,
                 private movieService: MovieDataService) { }
 
   ngOnInit() {
@@ -35,10 +37,16 @@ export class DashboardPage implements OnInit {
     
   }
 
-  viewDetails(movie){
-    this.rxjsService.setDetailMovieItem(movie);
-    this.router.navigateByUrl('detail')
+  viewDetails(movie, from:string){
+    this.rxjsService.setDetailMovieItem(movie['_embedded'].show);
+    this.router.navigateByUrl('detail');
+    // if(from === 'card'){
+    // }else{
+    //   this.rxjsService.setDetailMovieItem(movie);
+    //   this.router.navigateByUrl('detail');
+    // }
   }
+
 
   findElementInBar(evt: Event){
   
@@ -50,6 +58,30 @@ export class DashboardPage implements OnInit {
       this.showList = false;
     }
     
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: '¿Quieres cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Confirmar',
+          role: 'confirm',
+          handler: () => this.logoutAndClear(),
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  logoutAndClear(){
+    localStorage.clear();
+    this.router.navigateByUrl('welcome');
   }
 
 }

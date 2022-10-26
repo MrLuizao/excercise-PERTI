@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PipesModule } from './pipes/pipes.module';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,8 @@ import { PipesModule } from './pipes/pipes.module';
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,
+    PipesModule,
+    ComponentsModule,
     PipesModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
