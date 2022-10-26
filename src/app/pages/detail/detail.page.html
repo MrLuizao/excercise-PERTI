@@ -1,15 +1,13 @@
 <ion-header traslucent mode="ios">
   <ion-toolbar mode="md">
-    <ion-buttons slot="start" (click)="backNavigate()">
-      <img src="assets/icon/arrow-back.svg">
-    </ion-buttons>
+    <ion-icon name="chevron-back-outline" size="large" slot="start" (click)="backNavigate()"></ion-icon>
     <ion-title>{{movieName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <ion-grid class="display: grid;justify-content: center;" >
+  <ion-grid>
     <ion-col>
       <img [src]="backGround">
     </ion-col>
@@ -24,7 +22,7 @@
       <ion-label  class="fz-large"> {{summary}} </ion-label>
     </ion-row>
 
-    <ion-row>
+    <ion-row *ngIf="schedule">
       <ion-col *ngFor="let item of schedule.days" size="3">
         <ion-label color="medium" class="fz-small" > {{item}} </ion-label>
       </ion-col>
@@ -32,4 +30,4 @@
 
   </ion-grid>
     
-  </ion-content>
+</ion-content>

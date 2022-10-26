@@ -25,7 +25,7 @@ export class DetailPage implements OnInit {
       this.summary = element.summary;
       this.summary  = this.summary.substring(3);
       this.summary = this.summary.slice(0,-4);
-      this.schedule =  element.schedule;
+      this.schedule =  element.schedule;      
     });
   }
 

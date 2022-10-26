@@ -30,7 +30,6 @@ export class RegisterPage implements OnInit {
       this.passInput = this.loginData.login['password'];
       this.dateInput = this.loginData.dob['date'];
     }, ((err)=> {
-      debugger
       this.cancel();
       this.presentToast('Error del servidor');
     }))
