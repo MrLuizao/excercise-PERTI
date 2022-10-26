@@ -1,0 +1,22 @@
+.centerd{
+    display: grid;
+    justify-content: center;
+}
+
+ion-grid{
+    .fz-large{
+        font-size: large;
+    }
+    .fz-medium{
+        font-size: medium;
+    }    
+    .fz-small{
+        font-size: small;
+    }
+}
+
+.grid-down{
+    display: grid;
+    height: 15em;
+    align-items: center;
+}

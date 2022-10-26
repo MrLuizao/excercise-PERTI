@@ -7,6 +7,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
-</ion-content>
+  <ion-grid class="display: grid;justify-content: center;" >
+    <ion-col>
+      <img [src]="backGround">
+    </ion-col>
+  </ion-grid>
+
+  <ion-grid class="grid-down">
+    <ion-row>
+      <ion-label color="secondary" class="fz-medium"> {{gendre}} </ion-label>
+    </ion-row>
+     
+    <ion-row>
+      <ion-label  class="fz-large"> {{summary}} </ion-label>
+    </ion-row>
+
+    <ion-row>
+      <ion-col *ngFor="let item of schedule.days" size="3">
+        <ion-label color="medium" class="fz-small" > {{item}} </ion-label>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+    
+  </ion-content>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +15,7 @@ export class LoginPage implements OnInit {
   passInput: string;
 
   constructor(  public modalController: ModalController,
+                private toastController: ToastController,
                 public router: Router ) { }
 
   ngOnInit() {
@@ -29,6 +30,18 @@ export class LoginPage implements OnInit {
   loginUser(){
     this.modalController.dismiss();
     this.router.navigateByUrl('dashboard');
+    this.presentToast('Inicio de sesion correcto');
+
+  }
+
+  async presentToast(messagge: string) {
+    const toast = await this.toastController.create({
+      message: messagge,
+      duration: 1500,
+      position: 'bottom'
+    });
+
+    await toast.present();
   }
 
 }

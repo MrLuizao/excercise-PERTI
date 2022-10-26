@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -19,6 +19,7 @@ export class RegisterPage implements OnInit {
 
   constructor(  public modalController: ModalController,
                 private authService: AuthService,
+                private toastController: ToastController,
                 public router: Router) { }
 
   ngOnInit() {
@@ -28,7 +29,11 @@ export class RegisterPage implements OnInit {
       this.userInput = this.loginData.login['username'];
       this.passInput = this.loginData.login['password'];
       this.dateInput = this.loginData.dob['date'];
-    });
+    }, ((err)=> {
+      debugger
+      this.cancel();
+      this.presentToast('Error del servidor');
+    }))
   }
 
   cancel() {
@@ -40,6 +45,19 @@ export class RegisterPage implements OnInit {
     localStorage.setItem('passInput', this.passInput);
     this.modalController.dismiss();
     this.router.navigateByUrl('dashboard');
+
+    this.presentToast('Registro Exitoso');
+  }
+
+
+  async presentToast(messagge: string) {
+    const toast = await this.toastController.create({
+      message: messagge,
+      duration: 1500,
+      position: 'bottom'
+    });
+
+    await toast.present();
   }
 
 }
